@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Netlifx Clone Project</title>
+</head>
+<body>
+    <div class="container">
+      <h1>NET<span style="color: red;">FLIX</span></h1>
+      <p class="text">Thank you for sign up to Netflix.Tell me more about yourself.</p>
+      <div class="inputs">
+        <form>
+            <label for="name">Name</label>
+            <input class="input-text" type="text" name="name" id="name" placeholder="Enter your name" autocomplete="off">
+
+            <label for="age">Age</label>
+            <input class="input-text" type="number" name="age" id="age" placeholder="Enter your age" autocomplete="off">
+
+            <label for="email">Email</label>
+            <input class="input-text" id="email" type="email" name="email" placeholder="Enter your mail">
+
+            <div>
+                <p>Content Type</p>
+                <select name="Content" id="Content" class="input-text select">
+                    <option value="none" selected>Make your choise</option>
+                    <option value="series">Series</option>
+                    <option value="movies">Movies</option>
+                    <option value="tv">Tv Shows</option>
+                </select>
+            </div>
+
+            <div class="movie">
+                    <p>Movie Type</p>
+                    <input type="checkbox" name="type" id="comedy" value="comedy">
+                    <label for="comedy" class="label">Comedy</label> <br>
+                    <input type="checkbox" name="type" id="action" value="action">
+                    <label for="action" class="label">Action</label> <br>
+                    <input type="checkbox" name="type" id="romance" value="romance">
+                    <label for="romance" class="label">Romance</label>
+                </div>
+            <div class="gender">
+                <p>Gender</p>
+                <input type="radio" value="male" id="male" name="gender">
+                <label for="male">Male</label><br>
+                <input type="radio" value="female" id="female" name="gender">
+                <label for="female">Female</label><br>
+                <input type="radio" value="other" id="other" name="gender">
+                <label for="other">Other</label>
+            </div>
+            <div class="feedback">
+                <p style="margin-bottom: 7px;">Feedback</p>
+                <textarea
+                    name="feedback"
+                    id="feedback"
+                    placeholder="Write ur comments"
+                    cols="44"
+                    rows="5"
+                >
+                </textarea>
+            </div>
+            <div class="button">
+                <button type="submit">Send</button>
+            </div>
+        </form>
+      </div>
+    </div>
+</body>
+</html>

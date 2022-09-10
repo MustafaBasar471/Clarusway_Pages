@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    background-image: linear-gradient(to right, #7FB5FF, #C4DDFF);
+}
+
+.calculator {
+    position: relative;
+    min-width: 340px;
+    max-width: auto;
+    padding: 1.5rem;
+    border-radius: 20px;
+    background-color: white;
+}
+
+.calculator .buttons {
+    position: relative;
+    display: grid;
+}
+
+.calculator .buttons #value {
+    position: relative;
+    grid-column: span 4;
+    user-select: none;
+    overflow: none;
+    width: 100%;
+    text-align: right;
+    height: 80px;
+    padding: 0 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 3px solid #C4DDFF;
+    font-size: 2em;
+    line-height: 80px;
+    font-weight: 500;
+}
+
+
+.calculator .buttons span {
+    position: relative;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    user-select: none;
+    min-width: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.2em;
+    color: rgb(39, 32, 32);
+
+    border-radius: 10px;
+}
+
+.calculator .buttons span:active {
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.calculator .buttons span#clear {
+    grid-column: span 2;
+    background-color: red;
+    color: white;
+    font-weight: bolder;
+}
+
+.calculator .buttons span#plus {
+    grid-row: span 2;
+    background-color: #2196f3;
+    color: white;
+    font-weight: bolder;
+}
+
+.calculator .buttons span#equal {
+    grid-column: span 2;
+    background-color: #2196f3;
+    color: white;
+    font-weight: bolder;
+}
+
+.show {
+    display: flex;
+    position: absolute;
+    bottom: 80px;
+    padding: .7rem 2.4rem;
+    background-color: #2196f3;
+    color: white;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.toast {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    background-color: #fff;
+    padding: 20px 35px 20px 25px;
+    border-left: 6px solid #2196f3;
+    overflow: hidden;
+    transform: translateX(calc(100% + 40px));
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+}
+
+.toast.active {
+    transform: translateX(0%);
+}
+
+.toast .toast-container {
+    display: flex;
+    align-items: center;
+}
+
+.message .text {
+    font-size: 20px;
+    font-weight: 400;
+    color: gray;
+}
+
+.toast .progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: #ddd;
+}
+
+.toast .progress::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #60A5FA;
+}
+
+.progress.active::before {
+    animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+    100% {
+        right: 100%;
+    }
+}
