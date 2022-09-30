@@ -3,6 +3,7 @@ import {
   Input,
   WeatherData,
   WeatherDataHourly,
+  Footer,
 } from "./components/index";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
@@ -22,6 +23,7 @@ function App() {
       .get(HOURLY_URL)
       .then((res) => {
         setHourlyData(res.data);
+        console.log(res.data);
       })
       .catch((ERR) => console.error(ERR));
   };
@@ -38,6 +40,7 @@ function App() {
     axios
       .get(URL)
       .then((res) => {
+        console.log(res.data);
         setData(res.data);
         setLatLon(res.data.coord);
       })
@@ -49,6 +52,7 @@ function App() {
       <Input getLocation={setLocation} getInfos={getInfo} />
       {data && <WeatherData weatherData={data} func={getInfoHourly} />}
       {hourlyData && <WeatherDataHourly hourlyData={hourlyData} />}
+      <Footer />
     </div>
   );
 }
