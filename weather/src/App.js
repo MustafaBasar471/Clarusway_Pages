@@ -47,7 +47,7 @@ function App() {
       .catch((ERR) => console.error(ERR));
   };
   return (
-    <div className="bg-blue-600 h-screen">
+    <div className="bg-blue-600 min-h-screen">
       <Navbar />
       <Input getLocation={setLocation} getInfos={getInfo} />
       {data && <WeatherData weatherData={data} func={getInfoHourly} />}
