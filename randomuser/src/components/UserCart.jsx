@@ -2,6 +2,8 @@ import React from "react";
 import { UserCartDetails } from ".";
 
 import { AiOutlineMail } from "react-icons/ai";
+import { BsFillTelephoneFill } from "react-icons/bs";
+import { GoLocation } from "react-icons/go";
 
 const UserCart = ({ userData }) => {
   console.log(userData);
@@ -21,8 +23,14 @@ const UserCart = ({ userData }) => {
         <div className="w-[17rem] mx-auto space-y-3">
           {/*  */}
           <UserCartDetails icon={<AiOutlineMail />} data={userData.email} />
-          <UserCartDetails icon={<AiOutlineMail />} data={userData.email} />
-          <UserCartDetails icon={<AiOutlineMail />} data={userData.email} />
+          <UserCartDetails
+            icon={<BsFillTelephoneFill />}
+            data={userData.phone}
+          />
+          <UserCartDetails
+            icon={<GoLocation />}
+            data={userData.location.country}
+          />
           {/*  */}
         </div>
       </div>
