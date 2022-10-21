@@ -85,7 +85,7 @@ function App() {
   // Get Info Section is Done
 
   // Add User Info
-  const handleAddUser = (name) => {
+  const handleAddUser = () => {
     const newUser = {
       firstName: userData.name.first,
       email: userData.email,
