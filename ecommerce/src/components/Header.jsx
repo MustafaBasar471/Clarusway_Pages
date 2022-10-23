@@ -11,8 +11,19 @@ const Header = () => {
         </p>
       </div>
       <div className="flex justify-center items-center">
-        <div className="text-white h-[10rem] w-[20.5rem] md:w-[54rem] lg:w-[79rem] bg-[#790427] mt-[15rem] md:mt-[14rem] lg:mt-[13rem]">
-          <div className="">ğaopsfkpasofkoapsf</div>
+        <div className="text-white min-h-[8rem] w-[20.5rem] md:w-[54rem] lg:w-[79rem] bg-[#790427] mt-[15.8rem] md:mt-[12rem] lg:mt-[11rem] rounded-xl">
+          <div className="flex flex-col justify-center items-center mt-5 md:w-[38.5rem] mx-auto">
+            <p className="text-[21px] sm:text-[46px] font-semibold uppercase">
+              Free guitar lessons!
+            </p>
+            <p className="text-[10px] sm:text-[24px] text-center font-semibold">
+              Purchase any guitar over $499 and recieve a one-hour guitar
+              lessons free
+            </p>
+            <button className="text-[11px] sm:text-base mt-3 mb-5 bg-[#FF753A] px-5 py-2 rounded-3xl uppercase">
+              Learn More
+            </button>
+          </div>
         </div>
       </div>
     </div>
