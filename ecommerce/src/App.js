@@ -1,5 +1,11 @@
+import { Layout } from "./pages";
+
 function App() {
-  return <div className="App">ajsopıdkp</div>;
+  return (
+    <div className="App">
+      <Layout />
+    </div>
+  );
 }
 
 export default App;
