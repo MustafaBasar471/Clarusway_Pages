@@ -1,10 +1,11 @@
 import React from "react";
-import { Header } from "../components";
+import { Header, NewProducts } from "../components";
 
 const Layout = () => {
   return (
     <div>
       <Header />
+      <NewProducts />
     </div>
   );
 };
