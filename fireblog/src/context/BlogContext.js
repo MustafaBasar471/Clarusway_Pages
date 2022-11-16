@@ -38,15 +38,18 @@ export const BlogProvider = ({ children }) => {
   };
 
   const updateBlog = (state) => {
-    update(ref(db, "Blog/" + state.id), {
-      ...state,
-      title,
-      image,
-      textArea,
-    });
-    setTextArea("");
-    setTitle("");
-    setImage("");
+    const verifyUser = auth.currentUser.uid === state.user_id;
+    if (verifyUser) {
+      update(ref(db, "Blog/" + state.id), {
+        ...state,
+        title,
+        image,
+        textArea,
+      });
+      setTextArea("");
+      setTitle("");
+      setImage("");
+    }
   };
 
   const deleteFromDatabase = (oldPost) => {

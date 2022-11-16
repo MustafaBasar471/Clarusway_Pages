@@ -7,7 +7,7 @@ const UpdatePost = () => {
   return (
     <Layout>
       <div className="max-w-lg sm:mx-auto bg-slate-200 mt-10 mx-5">
-        <BlogForm title="Update Post" state={state} />
+        <BlogForm title_="Update Post" state={state} />
       </div>
     </Layout>
   );

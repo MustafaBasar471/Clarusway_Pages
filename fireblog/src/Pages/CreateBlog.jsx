@@ -5,7 +5,7 @@ const CreateBlog = () => {
   return (
     <Layout>
       <div className="max-w-lg sm:mx-auto bg-slate-200 mt-10 mx-5">
-        <BlogForm title="Create New Post" />
+        <BlogForm title_="Create New Post" />
       </div>
     </Layout>
   );
