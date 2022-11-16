@@ -7,7 +7,8 @@ import { BlogContext } from "../context/BlogContext";
 const Details = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
-  const { deleteFromDatabase } = useContext(BlogContext);
+  const { deleteFromDatabase, setTitle, setImage, setTextArea, setIsUpdate } =
+    useContext(BlogContext);
 
   const isUser = auth.currentUser.uid === state.user_id;
 
@@ -17,6 +18,16 @@ const Details = () => {
     setTimeout(() => {
       navigate("/");
     }, 400);
+  };
+
+  const handleUpdate = () => {
+    navigate(`/post/update/${state.id}`, { state });
+
+    // Edit Form
+    setTitle(state.title);
+    setImage(state.image);
+    setTextArea(state.textArea);
+    setIsUpdate(true);
   };
   return (
     <Layout>
@@ -42,7 +53,10 @@ const Details = () => {
             isUser ? "flex" : "hidden"
           } justify-center items-center space-x-5`}
         >
-          <button className="px-3 py-2 bg-slate-500 hover:bg-slate-300 rounded">
+          <button
+            className="px-3 py-2 bg-slate-500 hover:bg-slate-300 rounded"
+            onClick={handleUpdate}
+          >
             Update
           </button>
           <button

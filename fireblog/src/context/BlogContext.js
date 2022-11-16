@@ -1,4 +1,4 @@
-import { onValue, push, ref, remove, set } from "firebase/database";
+import { onValue, push, ref, remove, set, update } from "firebase/database";
 import React, { createContext, useState, useEffect } from "react";
 import { auth, db } from "../config/firebase";
 export const BlogContext = createContext();
@@ -8,20 +8,25 @@ export const BlogProvider = ({ children }) => {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [textArea, setTextArea] = useState("");
+  const [isUpdate, setIsUpdate] = useState(false);
   // BlogData
   const [blogData, setBlogData] = useState([]);
 
-  const handleSubmitForm = () => {
-    const newPost = {
-      user_id: auth.currentUser.uid,
-      username: auth.currentUser.displayName,
-      title,
-      image,
-      textArea,
-      like: [],
-      comment: [],
-    };
-    saveToDatabasePost(newPost);
+  const handleSubmitForm = (state) => {
+    if (state !== undefined) {
+      updateBlog(state);
+    } else {
+      const newPost = {
+        user_id: auth.currentUser.uid,
+        username: auth.currentUser.displayName,
+        title,
+        image,
+        textArea,
+        like: [],
+        comment: [],
+      };
+      saveToDatabasePost(newPost);
+    }
   };
 
   const saveToDatabasePost = (newPost) => {
@@ -30,6 +35,18 @@ export const BlogProvider = ({ children }) => {
     set(newPostRef, {
       ...newPost,
     });
+  };
+
+  const updateBlog = (state) => {
+    update(ref(db, "Blog/" + state.id), {
+      ...state,
+      title,
+      image,
+      textArea,
+    });
+    setTextArea("");
+    setTitle("");
+    setImage("");
   };
 
   const deleteFromDatabase = (oldPost) => {
@@ -60,6 +77,8 @@ export const BlogProvider = ({ children }) => {
         handleSubmitForm,
         blogData,
         deleteFromDatabase,
+        setIsUpdate,
+        isUpdate,
       }}
     >
       {children}

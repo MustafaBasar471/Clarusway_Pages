@@ -9,7 +9,7 @@ const Navbar = () => {
     },
     {
       title: "Create Post",
-      link: "/create/post",
+      link: "/post/create",
     },
     {
       title: "Logout",
