@@ -8,6 +8,11 @@ import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+  const { login, setEmail, setPassword } = useContext(AuthContext);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    login();
+  };
   return (
     <div className="w-full flex">
       <div className="h-screen hidden sm:block lg:w-2/3">
@@ -28,17 +33,19 @@ const Login = () => {
             <p className="text-xl mt-3">
               Welcome back! Please enter your details.
             </p>
-            <form className="mt-10 space-y-5">
+            <form className="mt-10 space-y-5" onSubmit={handleSubmit}>
               <input
                 placeholder="Email"
                 className="outline-none w-full px-3 py-4 border-b-2 focus:border-gray-400 duration-300 placeholder:text-xl placeholder:text-gray-400"
                 required
+                onChange={(e) => setEmail(e.target.value)}
               />
               <input
                 placeholder="Password"
                 className="outline-none w-full px-3 py-4 border-b-2 focus:border-gray-400 duration-300 placeholder:text-xl placeholder:text-gray-400"
                 required
                 type="password"
+                onChange={(e) => setPassword(e.target.value)}
               />
               <button
                 type="submit"

@@ -15,14 +15,13 @@ export const AuthProvider = ({ children }) => {
 
   // UserInfo
   const [userInfo, setUserInfo] = useState(null);
-
   // Custom Func
   const register = () => {
     try {
       createUserWithEmailAndPassword(auth, email, password).then(() =>
         updateProfile(auth.currentUser, {
           displayName: userName,
-        }).then((res) => setUserInfo(res.user))
+        }).then(() => window.location.replace("/auth/login"))
       );
     } catch (err) {
       console.log(err);

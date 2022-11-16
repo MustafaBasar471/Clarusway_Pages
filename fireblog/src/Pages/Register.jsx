@@ -8,12 +8,12 @@ import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 
 const Register = () => {
-  // const { register, setUserName, setEmail, setPassword } =
-  //   useContext(AuthContext);
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   register();
-  // };
+  const { register, setUserName, setEmail, setPassword } =
+    useContext(AuthContext);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    register();
+  };
   return (
     <div>
       <div className="w-full flex">
@@ -33,22 +33,25 @@ const Register = () => {
             <div className="mt-14 mx-[3.5rem]">
               <h1 className="font-extrabold text-4xl">Sign Up</h1>
               <p className="text-xl mt-3">Welcome, nice to see you</p>
-              <form className="mt-10 space-y-5">
+              <form className="mt-10 space-y-5" onSubmit={handleSubmit}>
                 <input
                   placeholder="Username"
                   className="outline-none w-full px-3 py-4 border-b-2 focus:border-gray-400 duration-300 placeholder:text-xl placeholder:text-gray-400"
                   required
+                  onChange={(e) => setUserName(e.target.value)}
                 />
                 <input
                   placeholder="Email"
                   className="outline-none w-full px-3 py-4 border-b-2 focus:border-gray-400 duration-300 placeholder:text-xl placeholder:text-gray-400"
                   required
+                  onChange={(e) => setEmail(e.target.value)}
                 />
                 <input
                   placeholder="Password"
                   className="outline-none w-full px-3 py-4 border-b-2 focus:border-gray-400 duration-300 placeholder:text-xl placeholder:text-gray-400"
                   type="password"
                   required
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <button
                   type="submit"
