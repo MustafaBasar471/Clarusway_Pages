@@ -1,18 +1,22 @@
-import { push, ref, set } from "firebase/database";
-import React, { createContext, useState } from "react";
+import { onValue, push, ref, set } from "firebase/database";
+import React, { createContext, useState, useEffect } from "react";
 import { auth, db } from "../config/firebase";
 export const BlogContext = createContext();
 
 export const BlogProvider = ({ children }) => {
+  // Form State
   const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState("");
+  const [image, setImage] = useState("");
   const [textArea, setTextArea] = useState("");
+  // BlogData
+  const [blogData, setBlogData] = useState([]);
 
   const handleSubmitForm = () => {
     const newPost = {
       user_id: auth.currentUser.uid,
+      username: auth.currentUser.displayName,
       title,
-      desc,
+      image,
       textArea,
       like: [],
       comment: [],
@@ -28,16 +32,29 @@ export const BlogProvider = ({ children }) => {
     });
   };
 
+  useEffect(() => {
+    const postRef = ref(db, "Blog");
+    onValue(postRef, (items) => {
+      const data = items.val();
+      const DataArr = [];
+      for (let id in data) {
+        DataArr.push({ id, ...data[id] });
+      }
+      setBlogData(DataArr);
+    });
+  }, []);
+
   return (
     <BlogContext.Provider
       value={{
         setTitle,
         title,
-        setDesc,
-        desc,
+        setImage,
+        image,
         setTextArea,
         textArea,
         handleSubmitForm,
+        blogData,
       }}
     >
       {children}

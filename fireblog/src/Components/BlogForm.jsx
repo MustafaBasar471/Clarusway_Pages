@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { BlogContext } from "../context/BlogContext";
 
 const BlogForm = () => {
-  const { setTitle, setDesc, setTextArea, handleSubmitForm } =
+  const { setTitle, setImage, setTextArea, handleSubmitForm } =
     useContext(BlogContext);
   const navigate = useNavigate();
 
@@ -28,10 +28,10 @@ const BlogForm = () => {
         onChange={(e) => setTitle(e.target.value)}
       />
       <input
-        placeholder="Enter Description"
+        placeholder="Enter IMG URL"
         className="w-full outline-none px-3 py-4 bg-slate-200 border-b-2 border-gray-300 focus:border-gray-500 duration-300"
         required
-        onChange={(e) => setDesc(e.target.value)}
+        onChange={(e) => setImage(e.target.value)}
       />
       <textarea
         placeholder="This are all yours"
