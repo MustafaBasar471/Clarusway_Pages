@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     try {
       signOut(auth);
-      setUserInfo(null);
+      setUserInfo();
     } catch (err) {
       console.log(err);
     }

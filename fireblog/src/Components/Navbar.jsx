@@ -21,6 +21,7 @@ const Navbar = () => {
   const handleLogOut = (idx) => {
     if (idx === 2) {
       logout();
+      window.location.replace("/auth/login");
     }
   };
 
