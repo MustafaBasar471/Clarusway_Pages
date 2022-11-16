@@ -11,6 +11,7 @@ const Dashboard = () => {
           {blogData.map((items, idx) => (
             <BlogCard key={idx} data={items} />
           ))}
+          {blogData.length === 0 && "No Post Yet"}
         </div>
       </div>
     </Layout>

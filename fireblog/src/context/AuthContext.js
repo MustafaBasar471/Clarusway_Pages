@@ -3,6 +3,7 @@ import { auth } from "../config/firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
   updateProfile,
 } from "firebase/auth";
 export const AuthContext = createContext();
@@ -37,6 +38,15 @@ export const AuthProvider = ({ children }) => {
       console.log(err);
     }
   };
+
+  const logout = () => {
+    try {
+      signOut(auth);
+      setUserInfo(null);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <AuthContext.Provider
       value={{
@@ -46,6 +56,7 @@ export const AuthProvider = ({ children }) => {
         setUserName,
         login,
         userInfo,
+        logout,
       }}
     >
       {children}

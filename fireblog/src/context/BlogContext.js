@@ -1,4 +1,4 @@
-import { onValue, push, ref, set } from "firebase/database";
+import { onValue, push, ref, remove, set } from "firebase/database";
 import React, { createContext, useState, useEffect } from "react";
 import { auth, db } from "../config/firebase";
 export const BlogContext = createContext();
@@ -32,6 +32,10 @@ export const BlogProvider = ({ children }) => {
     });
   };
 
+  const deleteFromDatabase = (oldPost) => {
+    remove(ref(db, "Blog/" + oldPost.id));
+  };
+
   useEffect(() => {
     const postRef = ref(db, "Blog");
     onValue(postRef, (items) => {
@@ -55,6 +59,7 @@ export const BlogProvider = ({ children }) => {
         textArea,
         handleSubmitForm,
         blogData,
+        deleteFromDatabase,
       }}
     >
       {children}
