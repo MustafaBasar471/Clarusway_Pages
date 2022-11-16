@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Dashboard, Login, Register } from "../Pages";
+import { Dashboard, Login, Register, CreateBlog } from "../Pages";
 import { AuthContext } from "../context/AuthContext";
 
 const AppRouter = () => {
@@ -10,6 +10,10 @@ const AppRouter = () => {
       <Routes>
         {/* Main Section */}
         <Route path="/" element={userInfo ? <Dashboard /> : <Login />} />
+        <Route
+          path="/create/post"
+          element={userInfo ? <CreateBlog /> : <Login />}
+        />
         {/* Auth Section */}
         <Route
           path="/auth/login"
