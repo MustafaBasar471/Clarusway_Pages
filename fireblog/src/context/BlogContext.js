@@ -22,8 +22,6 @@ export const BlogProvider = ({ children }) => {
         title,
         image,
         textArea,
-        like: [],
-        comment: [],
       };
       saveToDatabasePost(newPost);
     }

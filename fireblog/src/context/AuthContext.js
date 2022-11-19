@@ -1,7 +1,8 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { auth } from "../config/firebase";
 import {
   createUserWithEmailAndPassword,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
@@ -22,7 +23,7 @@ export const AuthProvider = ({ children }) => {
       createUserWithEmailAndPassword(auth, email, password).then(() =>
         updateProfile(auth.currentUser, {
           displayName: userName,
-        }).then(() => window.location.replace("/auth/login"))
+        })
       );
     } catch (err) {
       console.log(err);
@@ -31,9 +32,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = () => {
     try {
-      signInWithEmailAndPassword(auth, email, password).then((res) =>
-        setUserInfo(res.user)
-      );
+      signInWithEmailAndPassword(auth, email, password);
     } catch (err) {
       console.log(err);
     }
@@ -42,11 +41,18 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     try {
       signOut(auth);
-      setUserInfo();
     } catch (err) {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, (currentUser) => {
+      setUserInfo(currentUser);
+    });
+    return unsub;
+  }, []);
+
   return (
     <AuthContext.Provider
       value={{
